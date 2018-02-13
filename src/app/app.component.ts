@@ -21,9 +21,13 @@ export class AppComponent {
       // to add coupon
       product.addCoupon("cbdemo_earlybird");
 
-      // To add coupons and customer related information
+      // adding subscription custom fields
+      product.data["cf_subtest"] = "subscription custom field";
+
+      // To add coupons and customer related information with custom fields
       let cart = cbInstance.getCart();
-      cart.setCustomer({email: "vivek@chargebee.com"});
+      // Date should be in YYYY-MM-DD
+      cart.setCustomer({email: "vivek@chargebee.com", cf_test: "customer custom field", cf_date: "1991-09-16"});
 
       cbInstance.setCheckoutCallbacks(function(cart) {
         // You can get the plan name for which the checkout happened like below
