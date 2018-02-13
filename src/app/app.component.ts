@@ -26,6 +26,10 @@ export class AppComponent {
       cart.setCustomer({email: "vivek@chargebee.com"});
 
       cbInstance.setCheckoutCallbacks(function(cart) {
+        // You can get the plan name for which the checkout happened like below
+        let product = cart.products[0];
+        console.log(product.planId);
+        console.log(product.addons);
         return {
             loaded: function() {
                 console.log("checkout opened");
